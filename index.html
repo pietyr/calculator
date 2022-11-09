@@ -5,10 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Calculator</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<main>
-			<div class="display"></div>
+			<div class="display"><span>0</span></div>
 			<div class="keyboard-wrapper">
 				<button type="button" data-type="special" value="clear">
 					C
@@ -20,7 +27,7 @@
 					%
 				</button>
 				<button type="button" data-type="operator" value="divide">
-					/
+					÷
 				</button>
 				<button type="button" data-type="number" value="7">7</button>
 				<button type="button" data-type="number" value="8">8</button>
