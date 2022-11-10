@@ -1,5 +1,12 @@
 :root {
 	box-sizing: border-box;
+
+	--background: #010714;
+	--darker: #021427;
+	--lighter: #031e3a;
+	--white: #ece032;
+	--accent-1: #00d5e0;
+	--accent-2: #d93d3d;
 }
 
 *,
@@ -9,12 +16,64 @@
 }
 
 body {
-	font-family: "Source Code Pro", monospace;
-	font-weight: 400;
 	margin: 0;
 	padding: 0;
+	height: 100vh;
+	font-family: "Source Code Pro", monospace;
+	font-weight: 400;
+	background-color: var(--background);
+	color: var(--white);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	background-color: var(--darker);
+}
+
+div.display {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: auto;
+	padding-right: 1rem;
+	padding-bottom: 1.5rem;
+	font-size: 3rem;
+}
+
+div.keyboard-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	gap: 0.5rem;
+	padding: 1rem;
+	background-color: var(--lighter);
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
 }
 
 button {
 	font-weight: 600;
+	border: none;
+	margin: 0 auto;
+	background-color: var(--darker);
+	color: var(--white);
+	font-size: 2rem;
+	display: block;
+	height: 4rem;
+	width: 4rem;
+	border-radius: 1.5rem;
+}
+
+button.green {
+	color: var(--accent-1);
+}
+
+button.pink {
+	color: var(--accent-2);
+}
+
+button.result {
+	background-color: var(--accent-2);
 }
