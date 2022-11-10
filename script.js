@@ -23,6 +23,7 @@ keyboard.addEventListener("click", function handleButton(event) {
 let memoryValue = 0;
 let nextOperation = null;
 let lastButton = null;
+let commaInDisplay = false;
 
 function specialOperation(operation) {
 	if (operation == "clear") {
@@ -30,8 +31,12 @@ function specialOperation(operation) {
 		nextOperation = null;
 		lastButton = null;
 		display.innerHTML = "0";
+		commaInDisplay = false;
 	}
 	if (operation == "backspace") {
+		if (display.innerHTML[display.innerHTML.length] == ".") {
+			commaInDisplay = false;
+		}
 		display.innerHTML = display.innerHTML.slice(0, -1);
 	}
 	if (operation == "sign") {
@@ -41,9 +46,19 @@ function specialOperation(operation) {
 			display.innerHTML = "-" + display.innerHTML;
 		}
 	}
+	if (operation == "comma") {
+		if (!commaInDisplay) {
+			commaInDisplay = true;
+			display.innerHTML = display.innerHTML + ".";
+		}
+	}
 }
 
 function operate(operator) {
+	if (commaInDisplay && display.innerHTML[display.innerHTML.length] == ".") {
+		display.innerHTML = display.innerHTML + "0";
+	}
+
 	if (operator == "percent") {
 		display.innerHTML = calculate(
 			memoryValue,
@@ -73,6 +88,7 @@ function operate(operator) {
 function addNumber(number) {
 	if (lastButton == "operator") {
 		display.innerHTML = String(number);
+		commaInDisplay = false;
 	} else {
 		if (display.innerHTML == "0") {
 			if (number != 0) {
