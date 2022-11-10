@@ -35,11 +35,22 @@ function specialOperation(operation) {
 		display.innerHTML = display.innerHTML.slice(0, -1);
 	}
 	if (operation == "sign") {
+		if (display.innerHTML[0] == "-") {
+			display.innerHTML = display.innerHTML.slice(1);
+		} else {
+			display.innerHTML = "-" + display.innerHTML;
+		}
 	}
 }
 
 function operate(operator) {
-	if (nextOperation == null) {
+	if (operator == "percent") {
+		display.innerHTML = calculate(
+			memoryValue,
+			Number(display.innerHTML),
+			operator
+		);
+	} else if (nextOperation == null) {
 		if (operator != "result") {
 			nextOperation = operator;
 			memoryValue = Number(display.innerHTML);
@@ -50,12 +61,12 @@ function operate(operator) {
 			Number(display.innerHTML),
 			nextOperation
 		);
+		display.innerHTML = memoryValue;
+
 		if (operator != "result") {
 			nextOperation == operator;
 		}
-		display.innerHTML = memoryValue;
 	}
-
 	lastButton = "operator";
 }
 
@@ -71,10 +82,12 @@ function addNumber(number) {
 			display.innerHTML += String(number);
 		}
 	}
+	lastButton = "number";
 }
 
 function calculate(number1, number2, operator) {
 	if (operator == "percent") {
+		return number2 / 100;
 	}
 	if (operator == "divide") {
 		return number1 / number2;
