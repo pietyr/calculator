@@ -23,7 +23,7 @@ Minimal requirements:
 -   Basic operations: add, subtract, multiply, divide
 -   Calculator should not evaluate more than a single pair of numbers at a time.
 
-Non-required features that i added:
+Extra credit:
 
 -   Floating point numbers
 -   Good looking
